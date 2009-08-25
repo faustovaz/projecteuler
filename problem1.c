@@ -13,12 +13,12 @@
  *******************************************************************************************************************
  */
 
-int findAnswerToProblem1(void)
+int findAnswerToProblem1( )
 {
 	int i;
 	int sum = 0;
 
-	for (i = 1; i <= 1000; i++)
+	for (i = 1; i < 1000; i++)
 	{
 		if ((i % 3 == 0) || (i % 5 == 0))
 			sum += i;
@@ -30,9 +30,9 @@ int findAnswerToProblem1(void)
 
 
 
-int main(void)
+int main( )
 {
-	printf("Answer to problem 1: %i \n", findAnswerToProblem1());
+	printf("Answer to problem 1: %i \n", findAnswerToProblem1( ));
 
 	return 0;
 
