@@ -29,7 +29,7 @@ int findAnswerToProblem1(void)
 }
 
 
--
+
 int main(void)
 {
 	printf("Answer to problem 1: %i \n", findAnswerToProblem1());
