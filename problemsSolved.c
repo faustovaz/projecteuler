@@ -43,19 +43,14 @@ int findAnswerToProblem1( )
 int findAnswerToProblem2() //4613732
 {
 	int op1 = 0, op2 = 1, result = 0, sum = 0;
-	while (1)
+	while (result <= 4000000)
 	{
 		result = op1 + op2;
 		op1 = op2;
 		op2 = result;
 		
-		if (result <= 4000000)
-		{
-			if (result % 2 == 0) 
-				sum = sum + result;
-		}
-		else
-			break;
+		if (result % 2 == 0) 
+			sum = sum + result;
 	}
 
 	return sum;
