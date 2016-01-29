@@ -1,5 +1,5 @@
 module Generators
-  def generate_prime_numbers
+  def prime_numbers_generator
     Enumerator.new do |generator|
       primes = []
       counter = 2
