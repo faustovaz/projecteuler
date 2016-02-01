@@ -31,7 +31,7 @@ end
 
 puts 600_851_475_143.factors.last
 
-#More function way (need to improve)
+#More functional way (need to improve)
 prime_numbers_generator.take_while{ |p|
   p < sqrt(600_851_475_143)
 }.select { |f|
