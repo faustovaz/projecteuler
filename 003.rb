@@ -31,7 +31,7 @@ end
 
 puts 600_851_475_143.factors.last
 
-#Different version usgin ruby lazy feature
+#Different version using ruby lazy feature
 x = 600_851_475_143
 puts prime_numbers_generator.lazy.take_while{ x > 1 }.select{ |n|
   a = x
