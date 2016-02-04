@@ -7,3 +7,13 @@
 # numbers from 1 to 20?
 #
 # ****************************************************************************/
+
+require File.expand_path 'lib/generators'
+include Generators
+
+dividors = (1..20).to_a
+puts (2..Float::INFINITY).lazy.find{ |num|
+  dividors.all?{ |dividor|
+    (num.modulo dividor).zero?
+  }
+}
