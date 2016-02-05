@@ -5,3 +5,7 @@
 #  we can see that the 6th prime is 13.
 #  What is the 10 001st prime number?
 # ****************************************************************************/
+require File.expand_path 'lib/generators'
+include Generators
+
+puts prime_numbers_generator.take(10_001).last
