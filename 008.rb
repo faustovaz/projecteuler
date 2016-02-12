@@ -30,3 +30,9 @@ thousand_digit_number = "
 84580156166097919133875499200524063689912560717606
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"
+
+start = 0
+while thousand_digit_number.slice(start, 4).size = 4  do
+  adjacent_digits = thousand_digit_number.slice(start, 0).split("").map(:to_i)
+
+end
