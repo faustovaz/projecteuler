@@ -9,8 +9,8 @@
 #
 # ****************************************************************************/
 
-thousand_digit_number = "
-73167176531330624919225119674426574742355349194934
+thousand_digit_number =
+"73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
 85861560789112949495459501737958331952853208805511
 12540698747158523863050715693290963295227443043557
@@ -32,7 +32,10 @@ thousand_digit_number = "
 71636269561882670428252483600823257530420752963450"
 
 start = 0
-while thousand_digit_number.slice(start, 4).size = 4  do
-  adjacent_digits = thousand_digit_number.slice(start, 0).split("").map(:to_i)
-
+values = []
+thousand_digit_number.tr!("\n","")
+while thousand_digit_number[start, 13].size == 13  do
+  values << thousand_digit_number[start, 13].split("").map(&:to_i).reduce(:*)
+  start += 1
 end
+p values.sort.last
