@@ -22,4 +22,14 @@ module Generators
       end
     end
   end
+
+  def pythagorean_triplet_generator
+    Enumerator.new do |generator|
+      a,b,c = 1,2,3
+      for i in
+        generator.yield [a,b,c] if (c**2) == (a**2) + (b**2)
+        a,b,c = a+1,b+1,c+1
+      end
+    end
+  end
 end
