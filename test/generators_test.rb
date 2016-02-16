@@ -1,7 +1,9 @@
 require 'minitest/autorun'
 require File.expand_path '../lib/generators'
+require File.expand_path '../lib/utils'
 
 include Generators
+include Utils
 
 describe "Generators" do
   describe "Prime Numbers generator" do
@@ -21,7 +23,7 @@ describe "Generators" do
   describe "Pythagorean triplet generator" do
     it "should generate the first valid Pythagorean triplet" do
       triplet_generator = pythagorean_triplet_generator
-      a = triplet_generator.next
+      triplet?(triplet_generator.next).must_equal true
     end
   end
 
