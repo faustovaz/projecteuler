@@ -9,6 +9,9 @@
 # Find the product abc.
 # ****************************************************************************/
 
-def triplet?(a, b, c)
-  (a**2) + (b**2) == (c**2)
-end
+require File.expand_path 'lib/generators'
+include Generators
+
+p pythagorean_triplet_generator.select { |triplet|
+  triplet.reduce(:+) == 1_000
+}.first.reduce(:*)
