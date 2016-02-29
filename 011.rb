@@ -30,3 +30,8 @@ grid = [
     number.to_i
   }
 }
+
+def grid.say_hello()
+  puts "hello"
+end
+grid.say_hello
