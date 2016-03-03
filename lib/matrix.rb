@@ -23,4 +23,11 @@ class Matrix
     @matrix[row].slice(column, len + 1)
   end
 
+  def get_adjacents_from_the_left(row, column, len)
+    return [] if @matrix[row].nil? or
+                  @matrix[row][column].nil? or
+                  (column - len) < 0
+    @matrix[row].slice((column - len), len + 1)
+  end
+
 end
