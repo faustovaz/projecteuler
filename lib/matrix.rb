@@ -3,6 +3,10 @@ class Matrix
     @matrix = arr
   end
 
+  def size
+    [@matrix.size, @matrix.size && @matrix.first.size]
+  end
+
   def all_adjacents_numbers_of(row, column, len)
     adjacents = []
     adjacents << get_adjacents_from_the_right(row, column, len)
@@ -28,6 +32,17 @@ class Matrix
                   @matrix[row][column].nil? or
                   (column - len) < 0
     @matrix[row].slice((column - len), len + 1)
+  end
+
+  def transpose
+    transposed = Array.new size.last
+    transposed.each_index { |i| transposed[i] = Array.new size.first}
+    @matrix.each_index{ |row|
+      @matrix[row].each_index{ |column|
+        transposed[column][row] = @matrix[row][column]
+      }
+    }
+    transposed
   end
 
 end
