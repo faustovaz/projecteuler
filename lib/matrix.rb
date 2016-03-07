@@ -34,12 +34,12 @@ class Matrix
     @matrix[row].slice((column - len), len + 1)
   end
 
-  def get_adjacents_from_up(row, column, len)
+  def get_adjacents_from_above(row, column, len)
     transposed_matrix = Matrix.new transpose
     transposed_matrix.get_adjacents_from_the_left(row, column, len)
   end
 
-  def get_adjacents_from_down(row, column, len)
+  def get_adjacents_from_bottom(row, column, len)
     transposed_matrix = Matrix.new transpose
     transposed_matrix.get_adjacents_from_the_right(row, column, len)
   end

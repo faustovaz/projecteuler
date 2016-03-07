@@ -85,25 +85,25 @@ describe 'Matrix' do
 
   describe 'adjacentes numbers above a given element' do
     it 'should get an empty array' do
-      @matrix.get_adjacents_from_up(0,0,3).must_be :empty?
+      @matrix.get_adjacents_from_above(0,0,3).must_be :empty?
     end
 
     it 'should gel all adjacents numbers from above' do
-      @matrix.get_adjacents_from_up(2,2,2).must_equal [3,3,3]
+      @matrix.get_adjacents_from_above(2,2,2).must_equal [3,3,3]
     end
 
     it 'should get an empty array given an element with no adjacent numbers' do
-      @matrix.get_adjacents_from_up(0,0,3).must_be :empty?
+      @matrix.get_adjacents_from_above(0,0,3).must_be :empty?
     end
   end
 
   describe 'adjacents numbers below a given element' do
     it 'should get an ampy array' do
-      @matrix.get_adjacents_from_down(2,2,1).must_be :empty?
+      @matrix.get_adjacents_from_bottom(2,2,1).must_be :empty?
     end
 
     it 'shoud get all adjacents number from below' do
-      @matrix.get_adjacents_from_down(1,1,1).must_equal [2,2]
+      @matrix.get_adjacents_from_bottom(1,1,1).must_equal [2,2]
     end
   end
 
