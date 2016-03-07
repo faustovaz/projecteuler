@@ -4,15 +4,15 @@ class Matrix
   end
 
   def size
-    [@matrix.size, @matrix.size && @matrix.first.size]
+    [@matrix.nil? ? 0 : @matrix.size, @matrix.size.nil? ? 0 : @matrix.first.size]
   end
 
   def all_adjacents_numbers_of(row, column, len)
     adjacents = []
     adjacents << get_adjacents_from_the_right(row, column, len)
     adjacents << get_adjacents_from_the_left(row, column, len)
-    adjacents << get_adjacents_from_up(row, column, len)
-    adjacents << get_adjacents_from_down(row, column, len)
+    adjacents << get_adjacents_from_above(row, column, len)
+    adjacents << get_adjacents_from_bottom(row, column, len)
     adjacents << get_adjacents_from_up_right(row, column, len)
     adjacents << get_adjacents_from_down_right(row, column, len)
     adjacents << get_adjacents_from_up_left(row, column, len)
