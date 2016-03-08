@@ -8,7 +8,7 @@
 #
 # ****************************************************************************/
 
-require File.expand_path 'lib/generators'
+require File.expand_path '../lib/generators'
 include Generators
 include Math
 

@@ -5,7 +5,7 @@
 # Find the sum of all the primes below two million.
 # ****************************************************************************/
 
-require File.expand_path 'lib/generators'
+require File.expand_path '../lib/generators'
 include Generators
 
 p prime_numbers_generator.take_while{ |prime|

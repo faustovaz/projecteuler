@@ -11,7 +11,7 @@
 # four million, find the sum of the even-valued terms.
 # ****************************************************************************/
 
-require File.expand_path 'lib/generators'
+require File.expand_path '../lib/generators'
 include Generators
 
 puts fibbonaci_generator()

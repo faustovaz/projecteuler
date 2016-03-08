@@ -9,7 +9,7 @@
 # Find the product abc.
 # ****************************************************************************/
 
-require File.expand_path 'lib/generators'
+require File.expand_path '../lib/generators'
 include Generators
 
 p pythagorean_triplet_generator.select { |triplet|
