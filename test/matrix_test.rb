@@ -83,7 +83,7 @@ describe 'Matrix' do
     end
   end
 
-  describe 'adjacentes numbers above a given element' do
+  describe 'adjacents numbers above a given element' do
     it 'should get an empty array' do
       @matrix.get_adjacents_from_above(0,0,3).must_be :empty?
     end
@@ -107,4 +107,15 @@ describe 'Matrix' do
     end
   end
 
+  describe 'adjacents number from above right' do
+    it 'should get an empty array' do
+      @matrix.get_adjacents_from_above_right(1,1,3).must_be :empty?
+    end
+
+    it 'should get all adjacent numbers' do
+      @matrix.get_adjacents_from_above_right(2,2,2).must_equal [3,4,5]
+      @matrix.get_adjacents_from_above_right(1,0,1).must_equal [1,2]
+    end
+  end
+  
 end

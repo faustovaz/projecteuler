@@ -44,11 +44,18 @@ class Matrix
     transposed_matrix.get_adjacents_from_the_right(row, column, len)
   end
 
-  def get_adjacents_from_up_right(row, column, len)
+  def get_adjacents_from_above_right(row, column, len)
     return [] if @matrix[row].nil? or
                   @matrix[row][column].nil? or
                   (row - len) < 0 or (column + len) > size.last
     (0..len).map{ |index| @matrix[row - index][column + index] }
+  end
+
+  def get_adjacents_from_bottom_right(row, column, len)
+    return [] if @matrix[row].nil? or
+                  @matrix[row][column].nil? or
+                  (row + len) > size.first or (column + len) > size.last
+    (0..len).map { |index| @matrix[row + index][column + index] }
   end
 
   def transpose
