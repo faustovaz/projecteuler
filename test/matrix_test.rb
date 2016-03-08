@@ -117,5 +117,22 @@ describe 'Matrix' do
       @matrix.get_adjacents_from_above_right(1,0,1).must_equal [1,2]
     end
   end
-  
+
+  describe 'adjacents numbers from botton right' do
+    it 'should get an empty array' do
+      @matrix.get_adjacents_from_bottom_right(0,5,3).must_be :empty?
+      @matrix.get_adjacents_from_bottom_right(0,9,0).must_be :empty?
+    end
+
+    it 'should get all adjacent numbers' do
+      @matrix.get_adjacents_from_bottom_right(0,0,1).must_equal [1,2]
+      @matrix.get_adjacents_from_bottom_right(0,0,2).must_equal [1,2,3]
+      @matrix.get_adjacents_from_bottom_right(0,0,3).must_be :empty?
+    end
+
+    it 'should get an empty array if a invalid element is given' do
+      @matrix.get_adjacents_from_bottom_right(0,9,2).must_be :empty?
+    end
+  end
+
 end
