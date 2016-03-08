@@ -90,6 +90,7 @@ describe 'Matrix' do
 
     it 'should gel all adjacents numbers from above' do
       @matrix.get_adjacents_from_above(2,2,2).must_equal [3,3,3]
+      @matrix.get_adjacents_from_above(1,2,1).must_equal [3,3]
     end
 
     it 'should get an empty array given an element with no adjacent numbers' do
@@ -155,6 +156,21 @@ describe 'Matrix' do
 
     it 'should get all adjacents numbers' do
       @matrix.get_adjacents_from_above_left(2,7,2).must_equal [8,7,6]
+    end
+  end
+
+  describe 'all adjacents of a given element' do
+    it 'should get all adjacents' do
+      @matrix.all_adjacents_numbers_of(1,2,1).must_equal [
+        [3,3],
+        [3,4],
+        [3,4],
+        [3,4],
+        [3,3],
+        [3,2],
+        [2,3],
+        [3,2]
+      ]
     end
   end
 end

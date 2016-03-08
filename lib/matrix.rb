@@ -9,14 +9,14 @@ class Matrix
 
   def all_adjacents_numbers_of(row, column, len)
     adjacents = []
-    adjacents << get_adjacents_from_the_right(row, column, len)
-    adjacents << get_adjacents_from_the_left(row, column, len)
     adjacents << get_adjacents_from_above(row, column, len)
+    adjacents << get_adjacents_from_above_right(row, column, len)
+    adjacents << get_adjacents_from_the_right(row, column, len)
+    adjacents << get_adjacents_from_bottom_right(row, column, len)
     adjacents << get_adjacents_from_bottom(row, column, len)
-    adjacents << get_adjacents_from_up_right(row, column, len)
-    adjacents << get_adjacents_from_down_right(row, column, len)
-    adjacents << get_adjacents_from_up_left(row, column, len)
-    adjacents << get_adjacents_from_down_left(row, column, len)
+    adjacents << get_adjacents_from_bottom_left(row, column, len)
+    adjacents << get_adjacents_from_the_left(row, column, len)
+    adjacents << get_adjacents_from_above_left(row, column, len)
     adjacents
   end
 
@@ -34,12 +34,12 @@ class Matrix
 
   def get_adjacents_from_above(row, column, len)
     transposed_matrix = Matrix.new transpose
-    transposed_matrix.get_adjacents_from_the_left(row, column, len)
+    transposed_matrix.get_adjacents_from_the_left(column, row, len)
   end
 
   def get_adjacents_from_bottom(row, column, len)
     transposed_matrix = Matrix.new transpose
-    transposed_matrix.get_adjacents_from_the_right(row, column, len)
+    transposed_matrix.get_adjacents_from_the_right(column, row, len)
   end
 
   def get_adjacents_from_above_right(row, column, len)
