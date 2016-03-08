@@ -21,15 +21,13 @@ class Matrix
   end
 
   def get_adjacents_from_the_right(row, column, len)
-    return [] if @matrix[row].nil? or
-                  @matrix[row][column].nil? or
+    return [] if not exists?(row, column) or
                   @matrix[row].slice(column, len + 1).size != len + 1
     @matrix[row].slice(column, len + 1)
   end
 
   def get_adjacents_from_the_left(row, column, len)
-    return [] if @matrix[row].nil? or
-                  @matrix[row][column].nil? or
+    return [] if not exists?(row, column) or
                   (column - len) < 0
     @matrix[row].slice((column - len), len + 1)
   end
@@ -45,29 +43,25 @@ class Matrix
   end
 
   def get_adjacents_from_above_right(row, column, len)
-    return [] if @matrix[row].nil? or
-                  @matrix[row][column].nil? or
+    return [] if not exists?(row, column) or
                   (row - len) < 0 or (column + len) >= size.last
     (0..len).map{ |index| @matrix[row - index][column + index] }
   end
 
   def get_adjacents_from_bottom_right(row, column, len)
-    return [] if @matrix[row].nil? or
-                  @matrix[row][column].nil? or
+    return [] if not exists?(row, column) or
                   (row + len) >= size.first or (column + len) >= size.last
     (0..len).map { |index| @matrix[row + index][column + index] }
   end
 
   def get_adjacents_from_bottom_left(row, column, len)
-    return [] if @matrix[row].nil? or
-                  @matrix[row][column].nil? or
+    return [] if not exists?(row, column) or
                   (row + len) >= size.first or (column - len) < 0
     (0..len).map { |index| @matrix[row + index][column - index] }
    end
 
    def get_adjacents_from_above_left(row, column, len)
-     return [] if @matrix[row].nil? or
-                   @matrix[row][column].nil? or
+     return [] if not exists?(row, column) or
                    (row - len) < 0 or (column - len) < 0
      (0..len).map { |index| @matrix[row - index][column - index] }
     end
@@ -81,6 +75,10 @@ class Matrix
       }
     }
     transposed
+  end
+
+  def exists?(row, column)
+    not @matrix[row].nil? and not @matrix[row][column].nil?
   end
 
 end
