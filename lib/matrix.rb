@@ -58,6 +58,20 @@ class Matrix
     (0..len).map { |index| @matrix[row + index][column + index] }
   end
 
+  def get_adjacents_from_bottom_left(row, column, len)
+    return [] if @matrix[row].nil? or
+                  @matrix[row][column].nil? or
+                  (row + len) >= size.first or (column - len) < 0
+    (0..len).map { |index| @matrix[row + index][column - index] }
+   end
+
+   def get_adjacents_from_above_left(row, column, len)
+     return [] if @matrix[row].nil? or
+                   @matrix[row][column].nil? or
+                   (row - len) < 0 or (column - len) < 0
+     (0..len).map { |index| @matrix[row - index][column - index] }
+    end
+
   def transpose
     transposed = Array.new size.last
     transposed.each_index { |i| transposed[i] = Array.new size.first}

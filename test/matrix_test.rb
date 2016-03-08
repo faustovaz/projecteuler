@@ -135,4 +135,26 @@ describe 'Matrix' do
     end
   end
 
+  describe 'adjacents numbers from bottom left' do
+    it 'should get an empty array' do
+      @matrix.get_adjacents_from_bottom_left(2,2,2).must_be :empty?
+      @matrix.get_adjacents_from_bottom_left(1,1,2).must_be :empty?
+    end
+
+    it 'should get all adjacents numbers' do
+      @matrix.get_adjacents_from_bottom_left(1,1,1).must_equal [2,1]
+      @matrix.get_adjacents_from_bottom_left(0,7,2).must_equal [8,7,6]
+    end
+  end
+
+  describe 'adjacents numbers from above left' do
+    it 'should get an empty array' do
+      @matrix.get_adjacents_from_above_left(1,1,2).must_be :empty?
+      @matrix.get_adjacents_from_above_left(2,7,3).must_be :empty?
+    end
+
+    it 'should get all adjacents numbers' do
+      @matrix.get_adjacents_from_above_left(2,7,2).must_equal [8,7,6]
+    end
+  end
 end
