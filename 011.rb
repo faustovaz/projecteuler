@@ -3,6 +3,7 @@
 # What is the greatest product of four adjacent numbers in the same direction
 # (up, down, left, right, or diagonally) in the 20×20 grid?
 # ****************************************************************************/
+require File.expand_path('lib/matrix')
 
 grid = [
   "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08",
@@ -31,7 +32,9 @@ grid = [
   }
 }
 
-def grid.say_hello()
-  puts "hello"
-end
-grid.say_hello
+products = []
+matrix = Matrix.new grid
+matrix.all_adjacents(3).flatten(1).each{ |adjacents|
+  products << adjacents.reduce(:*) if not adjacents.empty?
+}
+p products.sort.last

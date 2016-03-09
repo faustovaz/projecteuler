@@ -7,6 +7,16 @@ class Matrix
     [@matrix.nil? ? 0 : @matrix.size, @matrix.size.nil? ? 0 : @matrix.first.size]
   end
 
+  def all_adjacents(len)
+    adjacents = []
+    (0..size.first).each { |row|
+      (0..size.last).each { |column|
+        adjacents << all_adjacents_numbers_of(row, column, len)
+      }
+    }
+    adjacents
+  end
+
   def all_adjacents_numbers_of(row, column, len)
     adjacents = []
     adjacents << get_adjacents_from_above(row, column, len)
