@@ -32,9 +32,6 @@ grid = [
   }
 }
 
-products = []
-matrix = Matrix.new grid
-matrix.all_adjacents(3).flatten(1).each{ |adjacents|
-  products << adjacents.reduce(:*) if not adjacents.empty?
-}
-p products.sort.last
+p Matrix.new(grid).all_adjacents(3).flatten(1).map{ |adjacents|
+  adjacents.empty? ? 0 : adjacents.reduce(:*)
+}.sort.last
