@@ -17,3 +17,17 @@
 # What is the value of the first triangle number to have over five hundred
 # divisors?
 # ****************************************************************************/
+
+p lambda {
+  Enumerator.new { |g|
+    sequence = 1
+    while true
+      g.yield (sequence * (sequence + 1)) / 2
+      sequence += 1
+    end
+  }
+}.call.take_while{ |triangular_number|
+  triangular_number.downto(1).count{ |n|
+    (triangular_number % n).zero?
+  } <= 5
+}
