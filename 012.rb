@@ -18,16 +18,25 @@
 # divisors?
 # ****************************************************************************/
 
-p lambda {
+generator = lambda { |starting_sequence|
   Enumerator.new { |g|
-    sequence = 1
+    sequence = starting_sequence
     while true
       g.yield (sequence * (sequence + 1)) / 2
       sequence += 1
     end
   }
-}.call.take_while{ |triangular_number|
-  triangular_number.downto(1).count{ |n|
-    (triangular_number % n).zero?
-  } <= 5
 }
+
+calculate = lambda { |generator|
+  values = generator.take_while{ |triangular_number|
+      triangular_number.downto(1).count{ |n|
+        (triangular_number % n).zero?
+        } <= 500
+      }
+  values.size + 1
+}
+
+p generator.call(
+  calculate.call(generator.call(1))
+).next
