@@ -18,25 +18,29 @@
 # divisors?
 # ****************************************************************************/
 
+require_relative 'lib/refactoring.rb'
+require 'set'
+
 generator = lambda { |starting_sequence|
   Enumerator.new { |g|
     sequence = starting_sequence
     while true
-      g.yield (sequence * (sequence + 1)) / 2
+      g.yield (sequence * (sequence + 1) / 2)
       sequence += 1
     end
   }
 }
 
-calculate = lambda { |generator|
-  values = generator.take_while{ |triangular_number|
-      triangular_number.downto(1).count{ |n|
-        (triangular_number % n).zero?
-        } <= 500
-      }
-  values.size + 1
+calculate = lambda { |triangular_number|
+  factors = triangular_number.refactor
+  (factors.size * factors.to_set.size ) < 500
 }
 
-p generator.call(
-  calculate.call(generator.call(1))
-).next
+calc = lambda { |generator|
+  while calculate.call(generator.peek) do
+    generator.next
+  end
+  generator.peek
+}
+
+p calc.call(generator.call(1))
