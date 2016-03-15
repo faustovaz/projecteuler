@@ -25,22 +25,16 @@ generator = lambda { |starting_sequence|
   Enumerator.new { |g|
     sequence = starting_sequence
     while true
-      g.yield (sequence * (sequence + 1) / 2)
+      g.yield (sequence * (sequence + 1) / 2).to_i
       sequence += 1
     end
   }
 }
 
-calculate = lambda { |triangular_number|
-  factors = triangular_number.refactor
-  (factors.size * factors.to_set.size ) < 500
-}
-
-calc = lambda { |generator|
-  while calculate.call(generator.peek) do
-    generator.next
+p lambda{ |generator|
+  triangular_number = 0
+  loop do
+    break if (triangular_number = generator.next).divisors.size > 500
   end
-  generator.peek
-}
-
-p calc.call(generator.call(1))
+  triangular_number
+}.call(generator.call 0)
