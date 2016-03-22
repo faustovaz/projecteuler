@@ -1,12 +1,12 @@
 
 public class _015 {
-	
-	private int matrix[][];
-	
-	public _015(int matrix[][]) {
+
+	private short matrix[][];
+
+	public _015(short matrix[][]) {
 		this.matrix = matrix;
 	}
-	
+
 	public long run_forest_run(int row, int column){
 		try{
 			if (this.matrix.length - 1 == row || this.matrix[row].length -1 == column)
@@ -18,9 +18,9 @@ public class _015 {
 			return 0;
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		_015 r = new _015(new int[20][20]);
-		System.out.println(r.run_forest_run(0, 0));
+		_015 runner = new _015(new short[20][20]);
+		System.out.println(runner.run_forest_run(0, 0));
 	}
 }
