@@ -1,5 +1,6 @@
 # Problem 15
 # Find how many paths to get to the bottom right corner
+# Too slow in Ruby... _15.java is faster
 
 class Runner
   def initialize(matrix = [[0] * 3] * 3)
