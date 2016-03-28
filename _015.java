@@ -7,22 +7,22 @@ import java.util.Stack;
 public class _015 {
 
 	private short matrix[][];
+	private int rows;
+	private int columns;
 
 	public _015(short matrix[][]) {
 		this.matrix = matrix;
+		this.rows = this.matrix.length;
+		this.columns = this.matrix[0].length;
 	}
 
 	//Recursive version
 	public long run_forest_run(int row, int column){
-		try{
-			if (this.matrix.length - 1 == row || this.matrix[row].length -1 == column)
-				return 1;
-			else
-				return run_forest_run(row, column + 1) + run_forest_run(row + 1, column);
-		}
-		catch(ArrayIndexOutOfBoundsException e){
+		if (this.rows == row + 1 && this.columns == column + 1)
+			return 1;
+		if (this.rows <= row || this.columns <= column)
 			return 0;
-		}
+		return run_forest_run(row, column + 1) + run_forest_run(row + 1, column);
 	}
 
 	//Iterative Version
@@ -73,7 +73,7 @@ public class _015 {
 	}
 
 	public static void main(String[] args) {
-		_015 runner = new _015(new short[20][20]);
+		_015 runner = new _015(new short[21][21]);
 		System.out.println(runner.run_forest_run(0, 0));
 	}
 }
