@@ -2,6 +2,8 @@
 // Find how many paths there are to get to the bottom right corner
 // Recursive version is much faster than iterative version
 
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Stack;
 
 public class _015 {
@@ -9,11 +11,14 @@ public class _015 {
 	private short matrix[][];
 	private int rows;
 	private int columns;
+	private Map<String, Long> cache;
+
 
 	public _015(short matrix[][]) {
 		this.matrix = matrix;
 		this.rows = this.matrix.length;
 		this.columns = this.matrix[0].length;
+		this.cache = new HashMap<String, Long>();
 	}
 
 	//Recursive version
@@ -22,7 +27,15 @@ public class _015 {
 			return 1;
 		if (this.rows <= row || this.columns <= column)
 			return 0;
-		return run_forest_run(row, column + 1) + run_forest_run(row + 1, column);
+		if (this.cache.containsKey(toStr(row, column))){
+			return this.cache.get(toStr(row, column));
+		}
+		else{
+			long result = run_forest_run(row, column + 1)
+											+ run_forest_run(row + 1, column);
+			this.cache.put(toStr(row, column), result);
+			return result;
+		}
 	}
 
 	//Iterative Version
