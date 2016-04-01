@@ -1,19 +1,13 @@
 #Problem 17
 
-units = {
-    1: "one",
-    2: "two",
-    3: "three",
-    4: "four",
-    5: "five",
-    6: "six",
-    7: "seven",
-    8: "eight",
-    9: "nine"
+ numbers = { 1 => "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six",
+              7: "seven", 8: "eight", 9: "nine", 10: "ten", 11: "eleven",
+              12: "twelve", 13: "thirteen", 14: "fourteen", 15: "fifteen",
+              16: "sixteen", 17: "seventeen", 18: "eighteen", 19: "nineteen",
+              20: "twenty", 30: "thirty", 50: "fifty"}
+
+in_full = lambda{ |number|
+  return numbers[number] if number in numbers.keys
 }
 
-dozens = {10: "ten", 20: "twenty", 30: "thirty", 50: "fifty"}
-
-hundred = "hundred"
-
-thousand = "thousand"
+p in_full.call(2)
