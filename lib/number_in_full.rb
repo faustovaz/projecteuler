@@ -8,8 +8,8 @@ class Fixnum
     17 => "seventeen", 18 => "eighteen", 19 => "nineteen",
   }
   @@tens = {
-    20 => 'twenty', 30 => 'thirty', 40 => 'fourty', 50 => 'fifty',
-    60 => 'sixty', 70 => 'seventy', 80 => 'eigthty', 90 => 'ninety'
+    20 => 'twenty', 30 => 'thirty', 40 => 'forty', 50 => 'fifty',
+    60 => 'sixty', 70 => 'seventy', 80 => 'eighty', 90 => 'ninety'
   }
   @@thousand = {
     100 => 'one hundred', 1000 => 'one thousand'
@@ -24,13 +24,14 @@ class Fixnum
   end
 
   def three_digit_number_in_full
-    return "" unless self > 100
+    return "" if self > 999
     return "#{@@ones[self/100]} hundred" if (self.modulo 100).zero?
     "#{@@ones[self/100]} hundred and #{(self.modulo 100).two_digit_number_in_full}"
   end
 
   def two_digit_number_in_full
-    return "" unless self < 100
+    return "" if self > 99
+    return @@ones.merge(@@tens)[self] if @@ones.merge(@@tens).keys.include? self
     number = (self / 10) * 10
     modulo = self.modulo 10
     return "#{@@tens[number]} #{@@ones[modulo]}" if number > 0

@@ -21,6 +21,7 @@ describe "Number in full" do
     901.in_full.must_equal "nine hundred and one"
     509.in_full.must_equal "five hundred and nine"
     300.in_full.must_equal "three hundred"
+    415.in_full.must_equal "four hundred and fifteen"
   end
 
 end
