@@ -25,6 +25,7 @@ class Fixnum
 
   def three_digit_number_in_full
     return "" unless self > 100
+    return "#{@@ones[self/100]} hundred" if (self.modulo 100).zero?
     "#{@@ones[self/100]} hundred and #{(self.modulo 100).two_digit_number_in_full}"
   end
 

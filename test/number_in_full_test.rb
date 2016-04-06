@@ -20,6 +20,7 @@ describe "Number in full" do
     832.in_full.must_equal "eight hundred and thirty two"
     901.in_full.must_equal "nine hundred and one"
     509.in_full.must_equal "five hundred and nine"
+    300.in_full.must_equal "three hundred"
   end
 
 end
