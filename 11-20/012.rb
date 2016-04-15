@@ -18,7 +18,7 @@
 # divisors?
 # ****************************************************************************/
 
-require_relative 'lib/refactoring.rb'
+require_relative '../lib/refactoring.rb'
 require 'set'
 
 generator = lambda { |starting_sequence|
