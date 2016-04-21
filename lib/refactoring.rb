@@ -26,4 +26,16 @@ class Fixnum
     divisors
   end
 
+  def perfect?
+    self.divisors.sort.reverse.drop(1).reduce(:+).eql? self
+  end
+
+  def abundant?
+    self.divisors.sort.reverse.drop(1).reduce(:+). > self
+  end
+
+  def deficient?
+    self.divisors.sort.reverse.drop(1).reduce(:+) < self
+  end
+
 end
