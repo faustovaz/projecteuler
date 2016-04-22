@@ -2,6 +2,7 @@ require_relative 'generators'
 
 include Generators
 include Math
+require 'set'
 
 class Fixnum
 
@@ -23,19 +24,21 @@ class Fixnum
     (1..(Math.sqrt number).to_i).each{ |n|
        divisors << n && divisors << (number / n).to_i if (number.modulo n).zero?
     }
-    divisors
+    Set.new divisors
   end
 
   def perfect?
+    return false if self.divisors.size <= 1
     self.divisors.sort.reverse.drop(1).reduce(:+).eql? self
   end
 
   def abundant?
-    self.divisors.sort.reverse.drop(1).reduce(:+). > self
+    return false if self.divisors.size <= 1
+    self.divisors.sort.reverse.drop(1).reduce(:+) > self
   end
 
   def deficient?
+    return false if self.divisors.size <= 1
     self.divisors.sort.reverse.drop(1).reduce(:+) < self
   end
-
 end
