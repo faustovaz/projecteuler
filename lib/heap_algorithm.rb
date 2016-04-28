@@ -1,6 +1,5 @@
-#Heap's algorithm for permutation
+#Heap's algorithm for permutations
 #Trying Heap's algorithm to solve problem 24
-
 class Heaps
   attr_reader :permutations
 
@@ -22,7 +21,6 @@ class Heaps
       array[i], array[size - 1] = array[size - 1], array[i] if size.even?
     end
   end
-
 end
 
 h = Heaps.new
