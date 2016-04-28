@@ -27,3 +27,4 @@ end
 
 h = Heaps.new
 p h.permute([0,1,2])
+p h.permute([1,2,3,4])
