@@ -1,7 +1,6 @@
 #Heap's algorithm for permutations
 #Trying Heap's algorithm to solve problem 24
 class Heaps
-  attr_reader :permutations
 
   def initialize
     @permutations = []
@@ -21,8 +20,5 @@ class Heaps
       array[i], array[size - 1] = array[size - 1], array[i] if size.even?
     end
   end
-end
 
-h = Heaps.new
-p h.permute([0,1,2])
-p h.permute([1,2,3,4])
+end
