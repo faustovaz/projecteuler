@@ -1,5 +1,5 @@
 #Problem 24
-#Permute
+#Milionth lexicographic permutation of (0..9).to_a
 require File.expand_path 'lib/heap_algorithm'
 
 heaps = Heaps.new
