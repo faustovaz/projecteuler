@@ -10,5 +10,5 @@ raise "wrooong" unless (fibbonaci_generator.take(
 ).size + 1).eql? 12
 
 p fibbonaci_generator.take(
-      (fibbonaci_generator.take_while{ |fib| fib.to_s.size < 1000 }.size + 1)
+  fibbonaci_generator.take_while{ |fib| fib.to_s.size < 1000 }.size + 1
 ).size + 1
