@@ -11,17 +11,25 @@ dividir = lambda{ |dividendo, divisor|
 }
 
 acha_recorrencia = lambda{ |array|
-  (0..array.size).each{ |i|
-    counter = 0
+  recorrencia = []
+  (0..array.size - 1).each{ |i|
     item = array[i]
-    next_item_index = array.slice(i+1, array.size).find_index(item)
-    next_i = i
-    next if next_item_index.nil?
-    while not (counter + i).eql? next_item_index do
-        break unless array[counter + i].eql? array[next_item_index + i]
-        counter += 1
+    next_item_index = array.map.with_index{ |v, i| i if v.eql? item}.compact
+    next if next_item_index.size.eql? 1
+    counter = 0
+    while(not (counter + i).eql? next_item_index[1]) do
+      recorrencia << array[counter + i]
+      counter += 1
     end
+    break
   }
+  recorrencia
 }
 
-puts dividir.call ARGV[0].to_i, ARGV[1].to_i
+bigger = []
+bigger_divisor = 0
+(2..1000).each{ |divisor|
+  resultado = dividir.call(1, divisor)
+  rec = acha_recorrencia.call(resultado.split('.')[1].split("").map(&:to_i))
+  bigger, bigger_divisor = Array.new(rec), divisor if rec.size > bigger.size
+}
