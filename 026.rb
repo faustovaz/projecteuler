@@ -11,25 +11,35 @@ dividir = lambda{ |dividendo, divisor|
 }
 
 acha_recorrencia = lambda{ |array|
-  recorrencia = []
-  (0..array.size - 1).each{ |i|
-    item = array[i]
-    next_item_index = array.map.with_index{ |v, i| i if v.eql? item}.compact
-    next if next_item_index.size.eql? 1
-    counter = 0
-    while(not (counter + i).eql? next_item_index[1]) do
-      recorrencia << array[counter + i]
-      counter += 1
-    end
-    break
+  recorrence = []
+  array.each_with_index{ |item, index|
+    items_index = array.map.with_index{ |v, i| i if v.eql? item }.compact
+    items_index.slice(1, items_index.size).each{ |item_index|
+      tmp_recorrence, counter = [], 0
+      while((array[counter + index].eql? array[counter + item_index]) && (not (counter + index).eql? item_index)) do
+        tmp_recorrence << array[counter + index]
+        counter += 1
+      end
+      recorrence = Array.new tmp_recorrence if tmp_recorrence.size > recorrence.size
+    }
   }
-  recorrencia
+  recorrence
 }
 
-bigger = []
-bigger_divisor = 0
-(2..1000).each{ |divisor|
-  resultado = dividir.call(1, divisor)
-  rec = acha_recorrencia.call(resultado.split('.')[1].split("").map(&:to_i))
-  bigger, bigger_divisor = Array.new(rec), divisor if rec.size > bigger.size
+# bigger = []
+# bigger_divisor = 0
+# (2..100).each{ |divisor|
+#   resultado = dividir.call(1, divisor)
+#   puts "Processing 1/#{divisor} = #{resultado}"
+#   rec = acha_recorrencia.call(resultado.split('.')[1].split("").map(&:to_i))
+#   bigger, bigger_divisor = Array.new(rec), divisor if rec.size > bigger.size
+#   puts "done"
+# }
+# p bigger
+# p bigger_divisor
+
+#p acha_recorrencia.call ARGV[0].split("").map(&:to_i)
+#https://en.wikipedia.org/wiki/Fermat's_little_theorem
+puts (0..1000).map { |d|
+  (1..d).find{ |t| (10**t % d) == 1 }
 }
