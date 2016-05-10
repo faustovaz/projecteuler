@@ -14,5 +14,8 @@ primes = prime_numbers_generator.take_while{ |prime| prime < 1000 }.reverse
 primes.each{ |prime|
   auxiliar = 1
   while not modular_power.call(auxiliar, prime).eql? 1 do auxiliar+=1 end
-  break if (prime - 1).eql? auxiliar
+  if (prime - 1).eql? auxiliar
+    puts prime
+    break
+  end
 }
