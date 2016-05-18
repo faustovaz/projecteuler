@@ -31,7 +31,7 @@ largerst_product = 0
 (-999..1000).each{ |a|
   (-999..1000).each{ |b|
     length = size_of_primes.call(a,b)
-    largerst_size, largerst_product = length, (a * b) if length < largerst_size
+    largerst_size, largerst_product = length, (a * b) if length > largerst_size
   }
 }
 p largerst_size
