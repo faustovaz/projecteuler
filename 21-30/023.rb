@@ -1,4 +1,4 @@
-require File.expand_path 'lib/refactoring'
+require File.expand_path '../lib/refactoring'
 require 'set'
 
 abundants = (1..28123).select{ |number| number.abundant? }
