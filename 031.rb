@@ -5,24 +5,18 @@
 #    1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
 #How many different ways can £2 be made using any number of coins?
 
-class Teste
-
-  def initialize
-    @coins = [1,2,5,10,20,50,100,200]
-    @total = 0
-  end
-
-  def new_coin(i)
-    ((@total += 1) && (return 1)) if (i.eql? 200)
-    return 1 if (i > 200)
-    (0..8).each{ |idx|
-      should_abort = new_coin(i + @coins[idx])
-      return 0 if not should_abort.eql? 0
+def change(coins, value)
+  total = 0
+  aux = value / coins.first
+  new_coins = coins[1..-1] #Cut the first element of coins
+  total = 1 if new_coins.size.zero?
+  lambda{
+    (aux.downto 0).each{ |i|
+      new_value = value - (i * coins.first)
+      total += 1 if new_value.zero?
+      total += change(new_coins, new_value) if not new_value.zero?
     }
-    return 0
-  end
-
+  }.call if not new_coins.size.zero?
+  total
 end
-
-t = Teste.new
-puts t.new_coin 0
+puts change [200, 100, 50, 20, 10, 5, 2, 1], 200
